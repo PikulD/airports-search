@@ -14,14 +14,8 @@ public class SearchAirport {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                if (isNumeric(values[column-1])){
-                    if (propertyStartWithInput(values[column-1],searchTerm)){
-                        airports.add(new Airport( values[column-1], line));
-                    }
-                }else {
-                    if (propertyStartWithInput(values[column-1],searchTerm)){
-                        airports.add(new Airport(values[column-1], line));
-                    }
+                if (propertyStartWithInput(values[column-1],searchTerm)) {
+                    airports.add(new Airport(values[column - 1], line));
                 }
             }
         } catch (IOException e) {
@@ -32,13 +26,5 @@ public class SearchAirport {
     private boolean propertyStartWithInput(String property, String input) {
         return property.toLowerCase().startsWith('\"'+input.toLowerCase())||
                 property.toLowerCase().startsWith(input.toLowerCase());
-    }
-    public boolean isNumeric(String s) {
-        try {
-            Double.parseDouble(s);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 }

@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         SearchAirport searchAirport = new SearchAirport();
-        String path = "src/main/resources/airports.csv";
+        String path = "classes/airports.csv";
 
 
         Scanner scanner = new Scanner(System.in);
@@ -20,7 +20,7 @@ public class Main {
                 break;
             }
             long start = System.currentTimeMillis();
-            List<Airport> airports =searchAirport.readAndSearchCSV(path, 2,inputLine);
+            List<Airport> airports =searchAirport.readAndSearchCSV(path, Integer.parseInt(args[0]),inputLine);
             long finish = System.currentTimeMillis();
             long elapsed = finish - start;
 
