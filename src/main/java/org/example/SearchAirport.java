@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class SearchAirport {
@@ -26,17 +25,20 @@ public class SearchAirport {
         return airports;
     }
 
-    public List<Airport> searchArrayList(List<Airport> list, String searchTerm) {
+    public List<Airport> searchArrayList(List<Airport> airports, String searchTerm) {
         List<Airport> searchResult = new ArrayList<>();
-        for (Airport s : list) {
-            if (s.getProperties().toLowerCase().startsWith('\"'+searchTerm.toLowerCase())||
-                    s.getProperties().toLowerCase().startsWith(searchTerm.toLowerCase())) {
-                searchResult.add(new Airport(s.getLine(),s.getProperties()));
+        for (Airport airport : airports) {
+            if (propertyStartWithInput(airport.getProperties(),searchTerm)) {
+                searchResult.add(new Airport(airport.getLine(),airport.getProperties()));
             }
         }
         return searchResult;
     }
-    public static List<Result> readLinesFromFileByNumbers(String filename, List<Airport> airports) throws IOException {
+    private boolean propertyStartWithInput(String property, String input) {
+        return property.toLowerCase().startsWith('\"'+input.toLowerCase())||
+                property.toLowerCase().startsWith(input.toLowerCase());
+    }
+    public List<Result> readLinesFromFileByNumbers(String filename, List<Airport> airports) throws IOException {
         File file = new File(filename);
         BufferedReader reader = new BufferedReader(new FileReader(file));
         List<Result> results = new ArrayList<>();
