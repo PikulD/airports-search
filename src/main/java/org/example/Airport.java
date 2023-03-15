@@ -1,7 +1,8 @@
 package org.example;
 
-public class Airport implements Comparable<Airport>{
+public class Airport{
     private String properties;
+
     private String line;
     public Airport(String properties, String line) {
         this.properties = properties;
@@ -17,8 +18,4 @@ public class Airport implements Comparable<Airport>{
         System.out.println(properties + '['+line+']');
     }
 
-    @Override
-    public int compareTo(Airport o) {
-        return properties.compareTo(o.getProperties());
-    }
 }
