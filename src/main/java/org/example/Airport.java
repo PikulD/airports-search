@@ -17,9 +17,4 @@ public class Airport{
     public void output (){
         System.out.println(properties + '['+line+']');
     }
-
-    @Override
-    public String toString() {
-        return properties + '['+line+']'+'\n';
-    }
 }
