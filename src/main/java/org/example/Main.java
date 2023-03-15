@@ -1,7 +1,6 @@
 package org.example;
 
 import java.io.*;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,10 +23,10 @@ public class Main {
             long finish = System.currentTimeMillis();
             long elapsed = finish - start;
 
-            Collections.sort(airports, new AirportComparator());
+            airports.sort(new AirportComparator());
 
             for (Airport airport : airports) {
-                airport.Output();
+                airport.output();
             }
             System.out.println("Колличество найденных строк: " + airports.size() + " Время затраченное на поиск: " + elapsed);
         }

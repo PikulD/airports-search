@@ -1,9 +1,9 @@
 package org.example;
 
 public class Airport{
-    private String properties;
+    private final String properties;
 
-    private String line;
+    private final String line;
     public Airport(String properties, String line) {
         this.properties = properties;
         this.line = line;
@@ -14,8 +14,12 @@ public class Airport{
     public String getLine() {
         return line;
     }
-    public void Output (){
+    public void output (){
         System.out.println(properties + '['+line+']');
     }
 
+    @Override
+    public String toString() {
+        return properties + '['+line+']'+'\n';
+    }
 }
